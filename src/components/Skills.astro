@@ -1,0 +1,219 @@
+---
+const skills = [
+  { name: 'HTML semántico', level: 92 },
+  { name: 'CSS moderno', level: 88 },
+  { name: 'JavaScript', level: 76 },
+  { name: 'Astro', level: 82 },
+];
+
+const tools = ['VS Code', 'Git', 'Figma', 'Vite', 'Chrome DevTools'];
+const learning = ['TypeScript', 'Accesibilidad avanzada', 'Motion design'];
+---
+
+<section class="section skills" id="skills" data-skills>
+  <div class="section__head">
+    <p class="section__label">Habilidades</p>
+    <h2>Progreso visible, curva de aprendizaje honesta y herramientas que uso a diario.</h2>
+  </div>
+
+  <div class="skills__layout">
+    <div class="skills__bars">
+      {skills.map((skill) => (
+        <article class="skill" style={`--level:${skill.level}%`}>
+          <div class="skill__top">
+            <span>{skill.name}</span>
+            <span>{skill.level}%</span>
+          </div>
+          <div class="skill__track" aria-hidden="true">
+            <span class="skill__fill"></span>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <aside class="skills__panel">
+      <div>
+        <h3>Herramientas</h3>
+        <ul>
+          {tools.map((tool) => <li>{tool}</li>)}
+        </ul>
+      </div>
+
+      <div>
+        <h3>Actualmente aprendiendo</h3>
+        <ul>
+          {learning.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<script>
+  const skillsSection = document.querySelector('[data-skills]');
+  const supportsViewTimeline = CSS.supports('animation-timeline: view()');
+
+  if (skillsSection && !supportsViewTimeline) {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          skillsSection.classList.add('is-visible');
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.25 },
+    );
+
+    observer.observe(skillsSection);
+  }
+</script>
+
+<style>
+  .section {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 4rem clamp(1rem, 3vw, 2rem);
+  }
+
+  .section__head {
+    display: grid;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section__label {
+    margin: 0;
+    color: var(--foam);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  h2 {
+    max-width: 22ch;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1;
+  }
+
+  .skills__layout {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .skills__bars,
+  .skills__panel > div {
+    border: 1px solid var(--border);
+    border-radius: 1.3rem;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--roast) 92%, transparent), color-mix(in srgb, var(--espresso) 84%, transparent));
+    box-shadow: var(--shadow);
+  }
+
+  .skills__bars {
+    padding: 1.1rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .skill {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .skill__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--cream);
+    font-weight: 600;
+  }
+
+  .skill__top span:last-child {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--foam);
+  }
+
+  .skill__track {
+    height: 0.8rem;
+    overflow: hidden;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--border) 55%, transparent);
+  }
+
+  .skill__fill {
+    display: block;
+    width: var(--level);
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--caramel), var(--foam));
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0.85;
+  }
+
+  @supports (animation-timeline: view()) {
+    .skill__fill {
+      animation: fill 1s ease both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 38%;
+    }
+  }
+
+  .skills.is-visible .skill__fill {
+    animation: fill 1s ease both;
+    transform: scaleX(1);
+  }
+
+  .skills__panel {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .skills__panel > div {
+    padding: 1.1rem;
+  }
+
+  .skills__panel h3 {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+  }
+
+  .skills__panel ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .skills__panel li {
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: color-mix(in srgb, var(--roast) 82%, transparent);
+    color: var(--cream);
+  }
+
+  @keyframes fill {
+    from {
+      transform: scaleX(0);
+    }
+
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @media (min-width: 800px) {
+    .skills__layout {
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    }
+  }
+</style>

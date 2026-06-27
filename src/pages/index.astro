@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Projects from '../components/Projects.astro';
+import Skills from '../components/Skills.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<Layout title="Sergio Isaac Moreno Alvarez | Portafolio" description="Portafolio web en Astro con estética cappuccino, animaciones modernas y enfoque mobile-first.">
+  <Nav />
+  <main>
+    <Hero />
+    <About />
+    <Projects />
+    <Skills />
+    <Contact />
+  </main>
+</Layout>
+
+<!--
+Despliegue en Netlify:
+1. Ejecuta npm install y luego npm run build.
+2. Sube la carpeta dist/ con drag & drop al panel de Netlify.
+3. Si prefieres despliegue continuo, conecta el repositorio y usa el build command npm run build.
+
+Despliegue en GitHub Pages:
+1. Instala @astrojs/github-pages y configura Astro para el adaptador correspondiente.
+2. Define site y basePath si el repositorio no vive en la raíz del dominio.
+3. Ejecuta npm run build y publica el contenido generado en dist/ según la guía del adaptador.
+-->
