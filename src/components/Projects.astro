@@ -2,39 +2,39 @@
 const projects = [
   {
     number: '01',
-    title: 'Landing de cafetería',
-    description: 'Sitio promocional responsive con foco en jerarquía visual, CTA claros y carga rápida.',
+    title: 'Cafetería Isa',
+    role: 'UI + E-commerce',
+    description: 'Landing intuitiva que organiza menú, cuenta de usuario y llamadas a la acción con un estilo editorial y confortable.',
     accent: '#C8874A',
-    tags: ['Astro', 'UI', 'Responsive'],
-    github: 'https://github.com/',
-    demo: '#',
+    tags: ['React', 'UI', 'E-commerce'],
+    stack: 'React · Vercel',
+    github: 'https://github.com/serisaac/cafeteria-isa',
+    demo: 'https://cafeteria-isa-hohm.vercel.app/',
+    highlight: 'Experiencia de compra digital para negocio local',
   },
   {
     number: '02',
-    title: 'Panel de estudio',
-    description: 'Dashboard simple para organizar hábitos de aprendizaje y revisar progreso semanal.',
+    title: 'Portafolio Charly',
+    role: 'Portfolio profesional',
+    description: 'Portfolio con enfoque en presentación personal, secciones de habilidades y proyectos, y navegación limpia para reclutadores.',
     accent: '#E8C99A',
-    tags: ['JavaScript', 'Dashboard', 'UX'],
-    github: 'https://github.com/',
-    demo: '#',
+    tags: ['React', 'Tailwind', 'Branding'],
+    stack: 'React · Tailwind',
+    github: 'https://github.com/serisaac/portafolioCharly',
+    demo: 'https://portafolio-charly.vercel.app/',
+    highlight: 'Diseño personal alineado a imagen profesional',
   },
   {
     number: '03',
-    title: 'Portfolio minimal',
-    description: 'Portfolio personal con navegación fluida, secciones cortas y animaciones discretas.',
+    title: 'Panadería Milagro',
+    role: 'Landing de producto',
+    description: 'Sitio de panadería artesanal que presenta productos, historia y llamadas a la acción con estilo cálido y local.',
     accent: '#B06F3E',
-    tags: ['Astro', 'A11y', 'Motion'],
-    github: 'https://github.com/',
-    demo: '#',
-  },
-  {
-    number: '04',
-    title: 'Landing de producto',
-    description: 'Página de presentación pensada para convertir con una narrativa visual más editorial.',
-    accent: '#D8A264',
-    tags: ['Design', 'Copy', 'Landing'],
-    github: 'https://github.com/',
-    demo: '#',
+    tags: ['UI', 'E-commerce', 'Copy'],
+    stack: 'React · Vercel',
+    github: 'https://github.com/serisaac/panaderia-milagro',
+    demo: 'https://panaderia-milagro.vercel.app/',
+    highlight: 'Identidad visual para marca local',
   },
 ];
 ---
@@ -42,29 +42,37 @@ const projects = [
 <section class="section projects" id="projects">
   <div class="section__head">
     <p class="section__label">Proyectos</p>
-    <h2>Cuatro piezas de práctica que muestran proceso, criterio y atención al detalle.</h2>
+    <h2>Tres proyectos que muestran mi proceso, criterio y enfoque por crear experiencias claras y memorables.</h2>
   </div>
 
   <div class="projects__grid">
     {projects.map((project) => (
       <article class="project-card" style={`--accent:${project.accent}`}>
-        <span class="project-card__bar" aria-hidden="true"></span>
-        <p class="project-card__number">{project.number}</p>
-        <h3>{project.title}</h3>
+        <div class="project-card__bar"></div>
+        <div class="project-card__header">
+          <div>
+            <p class="project-card__number">{project.number}</p>
+            <h3>{project.title}</h3>
+          </div>
+          <span class="project-card__pill">{project.role}</span>
+        </div>
+
+        <p class="project-card__highlight">{project.highlight}</p>
         <p>{project.description}</p>
 
-        <ul class="project-card__tags" aria-label={`Etiquetas de ${project.title}`}>
-          {project.tags.map((tag) => <li>{tag}</li>)}
-        </ul>
+        <div class="project-card__meta">
+          <ul class="project-card__tags" aria-label={`Etiquetas de ${project.title}`}>
+            {project.tags.map((tag) => <li>{tag}</li>)}
+          </ul>
+          <span class="project-card__stack">{project.stack}</span>
+        </div>
 
         <div class="project-card__links">
-          <a href={project.github} target="_blank" rel="noreferrer" aria-label={`Abrir GitHub de ${project.title}`}>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .6C5.6.6.4 5.8.4 12.2c0 5.1 3.3 9.4 7.9 11-.1-.8-.1-2 0-2.9.1-.8 0-1.3 0-1.3-3.2.6-3.9-1.4-3.9-1.4-.5-1.4-1.3-1.8-1.3-1.8-1.1-.8.1-.8.1-.8 1.3.1 2 1.4 2 1.4 1.1 2 2.8 1.4 3.4 1 .1-.8.4-1.4.8-1.7-2.5-.3-5.1-1.3-5.1-5.9 0-1.3.4-2.4 1.2-3.3-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.4 1.3 1-.3 2.1-.5 3.2-.5s2.2.2 3.2.5c2.4-1.6 3.4-1.3 3.4-1.3.6 1.6.2 2.8.1 3.1.8.9 1.2 2 1.2 3.3 0 4.6-2.6 5.6-5.1 5.9.4.4.8 1.1.8 2.2 0 1.6 0 2.9 0 3.3 4.6-1.6 7.9-5.9 7.9-11 0-6.4-5.2-11.6-11.6-11.6z" fill="currentColor"/></svg>
-            GitHub
-          </a>
           <a href={project.demo} aria-label={`Abrir demo de ${project.title}`}>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H14V3zM5 5h6V3H3v8h2V5zm14 14h-6v2h8v-8h-2v6zM5 19v-6H3v8h8v-2H5z" fill="currentColor"/></svg>
-            Demo
+            Ver demo
+          </a>
+          <a href={project.github} target="_blank" rel="noreferrer" aria-label={`Abrir GitHub de ${project.title}`}>
+            Código
           </a>
         </div>
       </article>
@@ -133,6 +141,52 @@ const projects = [
     transform: scaleX(1);
   }
 
+  .project-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .project-card:hover,
+  .project-card:focus-within {
+    transform: translateY(-3px);
+    box-shadow: 0 35px 80px rgba(11, 6, 3, 0.18);
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 0%, color-mix(in srgb, var(--accent) 10%, transparent) 45%, transparent 100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .project-card:hover::after,
+  .project-card:focus-within::after {
+    opacity: 1;
+  }
+
+  .project-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .project-card__pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--accent) 14%, var(--roast));
+    color: color-mix(in srgb, var(--accent) 72%, var(--cream));
+    font-size: 0.78rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
   .project-card__number {
     margin: 0 0 0.75rem;
     color: color-mix(in srgb, var(--accent) 80%, var(--cream));
@@ -149,6 +203,12 @@ const projects = [
     margin: 0;
     color: var(--muted);
     line-height: 1.7;
+  }
+
+  .project-card__highlight {
+    margin-bottom: 0.35rem !important;
+    color: color-mix(in srgb, var(--accent) 78%, var(--cream)) !important;
+    font-weight: 700;
   }
 
   .project-card__tags {
@@ -170,6 +230,20 @@ const projects = [
     font-weight: 600;
   }
 
+  .project-card__meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin: 1rem 0 0.9rem;
+  }
+
+  .project-card__stack {
+    color: var(--foam);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+  }
+
   .project-card__links {
     display: flex;
     flex-wrap: wrap;
@@ -179,14 +253,25 @@ const projects = [
   .project-card__links a {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: center;
+    min-height: 2.9rem;
+    min-width: 10rem;
+    padding: 0 1rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: color-mix(in srgb, var(--accent) 30%, var(--roast));
     color: var(--cream);
     font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
   }
 
-  .project-card__links svg {
-    width: 1.05rem;
-    height: 1.05rem;
+  .project-card__links a:hover,
+  .project-card__links a:focus-visible {
+    transform: translateY(-1px);
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--espresso);
   }
 
   @media (min-width: 800px) {

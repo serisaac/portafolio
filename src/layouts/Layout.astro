@@ -1,7 +1,7 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 
-const { title = 'Sergio Isaac Moreno Alvarez | Portafolio', description = 'Portafolio web en Astro con una estética cappuccino.' } = Astro.props;
+const { title = 'Sergio Isaac Moreno Alvarez | Desarrollador Frontend', description = 'Portafolio profesional de Sergio Isaac Moreno Alvarez, desarrollador frontend en formación listo para aportar en proyectos reales y oportunidades laborales.' } = Astro.props;
 ---
 
 <!doctype html>
@@ -50,8 +50,10 @@ const { title = 'Sergio Isaac Moreno Alvarez | Portafolio', description = 'Porta
   }
 
   body {
+    position: relative;
     margin: 0;
     min-height: 100vh;
+    overflow-x: hidden;
     background:
       radial-gradient(circle at 20% 10%, rgba(200, 135, 74, 0.12), transparent 26%),
       radial-gradient(circle at 80% 0%, rgba(232, 201, 154, 0.08), transparent 24%),
@@ -60,6 +62,35 @@ const { title = 'Sergio Isaac Moreno Alvarez | Portafolio', description = 'Porta
     font-family: 'Inter', system-ui, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+  }
+
+  body::before,
+  body::after {
+    content: '';
+    position: fixed;
+    inset: auto;
+    pointer-events: none;
+    z-index: -1;
+    filter: blur(38px);
+    opacity: 0.35;
+  }
+
+  body::before {
+    top: -2rem;
+    left: -3rem;
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 135, 74, 0.4), transparent 70%);
+  }
+
+  body::after {
+    right: -3rem;
+    top: 8rem;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232, 201, 154, 0.24), transparent 70%);
   }
 
   a {

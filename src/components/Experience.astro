@@ -1,0 +1,97 @@
+---
+const highlights = [
+  {
+    title: 'Enfoque',
+    text: 'Creo interfaces que comunican con claridad, cargan rápido y ayudan a convertir visitas en clientes o oportunidades.',
+  },
+  {
+    title: 'Proyectos',
+    text: 'He construido experiencias para cafetería, panadería y portafolios, con foco en identidad visual, usabilidad y claridad de mensaje.',
+  },
+  {
+    title: 'Aprendizaje',
+    text: 'Sigo creciendo con Astro, React, TypeScript y herramientas modernas para crear productos digitales más eficientes y profesionales.',
+  },
+];
+---
+
+<section class="section experience" id="experience">
+  <div class="section__head">
+    <p class="section__label">Experiencia</p>
+    <h2>Diseño y desarrollo con criterio, negocio y una base sólida.</h2>
+  </div>
+
+  <div class="experience__grid">
+    {highlights.map((item) => (
+      <article class="experience-card">
+        <h3>{item.title}</h3>
+        <p>{item.text}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .section {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 4rem clamp(1rem, 3vw, 2rem);
+  }
+
+  .section__head {
+    display: grid;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section__label {
+    margin: 0;
+    color: var(--foam);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  h2 {
+    max-width: 20ch;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1;
+  }
+
+  .experience__grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .experience-card {
+    padding: 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: 1.3rem;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--roast) 92%, transparent), color-mix(in srgb, var(--espresso) 84%, transparent));
+    box-shadow: var(--shadow);
+  }
+
+  .experience-card h3 {
+    margin-bottom: 0.55rem;
+    font-size: 1.08rem;
+  }
+
+  .experience-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  @media (min-width: 800px) {
+    .experience__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

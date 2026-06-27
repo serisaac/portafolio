@@ -1,19 +1,31 @@
 ---
-const phrases = ['desarrollador frontend', 'amante del buen código', 'apasionado por Astro', 'aprendiendo cada día'];
+const phrases = ['desarrollador frontend', 'pensando en productos reales', 'enfocado en resultados', 'listo para aportar'];
 const codeSnippet = String.raw`const portfolio = {
-  stack: 'Astro',
+  stack: 'Astro + React',
   style: 'cappuccino',
-  focus: ['accesibilidad', 'rendimiento']
+  focus: ['UI', 'rendimiento', 'empleo']
 };`;
 ---
 
 <section class="hero" id="top">
   <div class="hero__content">
-    <p class="eyebrow">Sergio Isaac Moreno Alvarez · Astro 4</p>
-    <h1>Construyo interfaces limpias, rápidas y con mucha intención visual.</h1>
+    <p class="eyebrow">Sergio Isaac Moreno Alvarez · Frontend junior en búsqueda de su primera oportunidad</p>
+    <h1>Creo interfaces web claras, rápidas y orientadas a resultados reales.</h1>
     <p class="hero__lede">
-      Soy un desarrollador principiante enfocado en fundamentos sólidos, accesibilidad y una experiencia visual que se siente cuidada desde el primer scroll.
+      Soy desarrollador frontend en formación con una base sólida en experiencia de usuario, rendimiento y diseño útil. Estoy preparado para aportar valor en equipos que valoren compromiso, criterio y ganas de crecer.
     </p>
+
+    <div class="hero__highlights" aria-label="Áreas de enfoque">
+      <span>Frontend</span>
+      <span>UI & UX</span>
+      <span>Astro</span>
+      <span>Trabajo en equipo</span>
+    </div>
+
+    <div class="hero__meta" aria-label="Indicadores de valor">
+      <span>Disponible para empleo</span>
+      <span>Listo para aportar desde el primer día</span>
+    </div>
 
     <div class="terminal" aria-label="Terminal animada">
       <div class="terminal__header">
@@ -25,20 +37,21 @@ const codeSnippet = String.raw`const portfolio = {
           <span class="terminal__cursor">▍</span>
           <span class="terminal__phrase" data-phrases={JSON.stringify(phrases)}>desarrollador frontend</span>
         </p>
-        <p class="terminal__hint">Typewriter effect hecho con Vanilla JS puro.</p>
+        <p class="terminal__hint">Estoy listo para aportar valor a productos reales.</p>
       </div>
     </div>
 
     <div class="hero__actions">
       <a class="button button--primary" href="#projects">Ver proyectos</a>
-      <a class="button button--ghost" href="#contact">Contactar</a>
+      <a class="button button--ghost" href="#contact">Hablemos</a>
     </div>
   </div>
 
   <div class="hero__aside">
     <article class="code-card" aria-label="Tarjeta de código flotante">
-      <p class="code-card__title">Snippet destacado</p>
+      <p class="code-card__title"><span class="code-card__dot"></span>Enfoque actual</p>
       <pre><code>{codeSnippet}</code></pre>
+      <p class="code-card__footer">Diseño, ejecución y claridad de mensaje para productos digitales.</p>
     </article>
 
     <div class="scroll-indicator" aria-hidden="true">
@@ -98,8 +111,21 @@ const codeSnippet = String.raw`const portfolio = {
   }
 
   .hero__content {
+    position: relative;
     display: grid;
     gap: 1.35rem;
+  }
+
+  .hero__content::before {
+    content: '';
+    position: absolute;
+    inset: -1rem auto auto -1rem;
+    width: 7rem;
+    height: 7rem;
+    background: radial-gradient(circle, color-mix(in srgb, var(--caramel) 24%, transparent) 0%, transparent 70%);
+    filter: blur(18px);
+    pointer-events: none;
+    z-index: -1;
   }
 
   .eyebrow {
@@ -131,6 +157,38 @@ const codeSnippet = String.raw`const portfolio = {
     color: var(--muted);
     font-size: clamp(1rem, 2vw, 1.15rem);
     line-height: 1.7;
+  }
+
+  .hero__highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .hero__highlights span {
+    padding: 0.5rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--roast) 84%, transparent);
+    color: var(--cream);
+    font-size: 0.84rem;
+    font-weight: 600;
+  }
+
+  .hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .hero__meta span {
+    padding: 0.45rem 0.8rem;
+    border: 1px solid color-mix(in srgb, var(--caramel) 28%, var(--border));
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--caramel) 12%, var(--roast));
+    color: var(--foam);
+    font-size: 0.8rem;
+    font-weight: 600;
   }
 
   .terminal {
@@ -191,6 +249,7 @@ const codeSnippet = String.raw`const portfolio = {
     display: flex;
     flex-wrap: wrap;
     gap: 0.9rem;
+    padding-top: 0.2rem;
   }
 
   .button {
@@ -203,11 +262,13 @@ const codeSnippet = String.raw`const portfolio = {
     border: 1px solid var(--border);
     font-weight: 700;
     letter-spacing: 0.02em;
-    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
   }
 
   .button:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
   }
 
   .button--primary {
@@ -244,12 +305,23 @@ const codeSnippet = String.raw`const portfolio = {
   }
 
   .code-card__title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
     margin: 0 0 0.8rem;
     color: var(--foam);
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.82rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
+  }
+
+  .code-card__dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: var(--caramel);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--caramel) 18%, transparent);
   }
 
   .code-card pre {
@@ -259,6 +331,13 @@ const codeSnippet = String.raw`const portfolio = {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.88rem;
     line-height: 1.7;
+  }
+
+  .code-card__footer {
+    margin: 0.7rem 0 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
   }
 
   .scroll-indicator {

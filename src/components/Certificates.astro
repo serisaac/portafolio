@@ -1,0 +1,128 @@
+---
+const certificates = [
+  {
+    title: 'Frontend Developer JavaScript',
+    issuer: 'Platzi',
+    description: 'Certificación enfocada en desarrollo web frontend, lógica de JavaScript y construcción de interfaces funcionales.',
+    file: '/certificates/diploma-frontend-developer-js.pdf',
+  },
+  {
+    title: 'Astro desde cero',
+    issuer: 'Platzi',
+    description: 'Formación en Astro para crear sitios rápidos, modernos y con excelente rendimiento.',
+    file: '/certificates/certificado-c1729c46-7096-4480-ae4c-8819c8756688-8382034c-23e4-446c-b030-7fd94fe012dd.pdf',
+  },
+  {
+    title: 'Prompting responsable: maximiza la IA en tu negocio',
+    issuer: 'UPSIN',
+    description: 'Constancia académica que respalda mi formación en el entorno universitario y mi perfil profesional.',
+    file: '/certificates/1311_2023030527@upsin.edu.mx.pdf',
+  },
+];
+---
+
+<section class="section certificates" id="certificates">
+  <div class="section__head">
+    <p class="section__label">Certificados</p>
+    <h2>Certificaciones que respaldan mi perfil para trabajar en desarrollo web, IA y productos digitales.</h2>
+  </div>
+
+  <div class="certificates__grid">
+    {certificates.map((certificate) => (
+      <article class="certificate-card">
+        <div>
+          <h3>{certificate.title}</h3>
+          <p class="certificate-card__issuer">{certificate.issuer}</p>
+          <p>{certificate.description}</p>
+        </div>
+        <a href={certificate.file} target="_blank" rel="noreferrer">Ver certificado</a>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .section {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 4rem clamp(1rem, 3vw, 2rem);
+  }
+
+  .section__head {
+    display: grid;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section__label {
+    margin: 0;
+    color: var(--foam);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  h2,
+  h3 {
+    margin: 0;
+  }
+
+  h2 {
+    max-width: 22ch;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1;
+  }
+
+  .certificates__grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .certificate-card {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: 1.3rem;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--roast) 92%, transparent), color-mix(in srgb, var(--espresso) 84%, transparent));
+    box-shadow: var(--shadow);
+  }
+
+  .certificate-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .certificate-card__issuer {
+    margin: 0 0 0.35rem;
+    color: var(--foam);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .certificate-card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .certificate-card a {
+    justify-self: start;
+    padding: 0.6rem 0.9rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--caramel) 70%, var(--cream));
+    color: var(--espresso);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  @media (min-width: 800px) {
+    .certificates__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

@@ -1,13 +1,21 @@
 ---
 const skills = [
   { name: 'HTML semántico', level: 92 },
-  { name: 'CSS moderno', level: 88 },
-  { name: 'JavaScript', level: 76 },
-  { name: 'Astro', level: 82 },
+  { name: 'CSS moderno', level: 90 },
+  { name: 'JavaScript', level: 84 },
+  { name: 'Java', level: 78 },
+  { name: 'Python', level: 75 },
+  { name: 'C++ / C#', level: 70 },
 ];
 
 const tools = ['VS Code', 'Git', 'Figma', 'Vite', 'Chrome DevTools'];
-const learning = ['TypeScript', 'Accesibilidad avanzada', 'Motion design'];
+const stackGroups = [
+  { title: 'Tecnologías', items: ['HTML', 'CSS', 'Java', 'JavaScript', 'Python', 'C++', 'C#'] },
+  { title: 'Frameworks', items: ['Astro', 'Tailwind CSS', 'React Native', 'TypeScript'] },
+  { title: 'Sistemas', items: ['Linux', 'Kali Linux'] },
+  { title: 'Bases de datos', items: ['Supabase', 'MariaDB', 'SQLyog'] },
+];
+const learning = ['TypeScript avanzado', 'Accesibilidad avanzada', 'Motion design'];
 ---
 
 <section class="section skills" id="skills" data-skills>
@@ -33,11 +41,20 @@ const learning = ['TypeScript', 'Accesibilidad avanzada', 'Motion design'];
 
     <aside class="skills__panel">
       <div>
-        <h3>Herramientas</h3>
+        <h3>Herramientas diarias</h3>
         <ul>
           {tools.map((tool) => <li>{tool}</li>)}
         </ul>
       </div>
+
+      {stackGroups.map((group) => (
+        <div>
+          <h3>{group.title}</h3>
+          <ul>
+            {group.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      ))}
 
       <div>
         <h3>Actualmente aprendiendo</h3>
