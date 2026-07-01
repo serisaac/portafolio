@@ -4,7 +4,8 @@ const projects = [
     number: '01',
     title: 'Cafetería Isa',
     role: 'UI + E-commerce',
-    description: 'Landing intuitiva que organiza menú, cuenta de usuario y llamadas a la acción con un estilo editorial y confortable.',
+    challenge: 'Conectar el catálogo a una base de datos real fue la parte que más tiempo me tomó: los productos no siempre llegaban como esperaba y tuve que ajustar cómo se guardaban y mostraban hasta que la carta se viera consistente. Sumar un mapa de ubicación (sin llegar a tiempo real) también implicó decidir cuánto detalle valía la pena mostrar.',
+    designChoice: 'La paleta cálida y un diseño más parecido a un menú físico que a una tienda genérica fue decisión mía: quería que se sintiera como entrar a una cafetería, no a un checkout.',
     accent: '#C8874A',
     tags: ['React', 'UI', 'E-commerce'],
     stack: 'React · Vercel',
@@ -16,7 +17,8 @@ const projects = [
     number: '02',
     title: 'Portafolio Charly',
     role: 'Portfolio profesional',
-    description: 'Portfolio con enfoque en presentación personal, secciones de habilidades y proyectos, y navegación limpia para reclutadores.',
+    challenge: 'Aquí el reto fue más de traducción que de código: le pedí a Charly su información y fui armando secciones a partir de lo que me compartía, en vez de partir de una plantilla ya definida.',
+    designChoice: 'El estilo visual salió de su perfil profesional, no de un template — ajusté tono y jerarquía para que un reclutador entienda quién es él en los primeros segundos.',
     accent: '#E8C99A',
     tags: ['React', 'Tailwind', 'Branding'],
     stack: 'React · Tailwind',
@@ -28,7 +30,8 @@ const projects = [
     number: '03',
     title: 'Panadería Milagro',
     role: 'Landing de producto',
-    description: 'Sitio de panadería artesanal que presenta productos, historia y llamadas a la acción con estilo cálido y local.',
+    challenge: 'Como en Cafetería Isa, conectar productos a la base de datos y sumar el mapa de ubicación fue lo que más ajustes pidió — hubo momentos donde el diseño y los datos no cuadraban y tuve que revisar ambos lados.',
+    designChoice: 'Elegí una identidad más artesanal que la de la cafetería, pensando en que una panadería local transmite algo distinto: más calidez de barrio que de negocio digital.',
     accent: '#B06F3E',
     tags: ['UI', 'E-commerce', 'Copy'],
     stack: 'React · Vercel',
@@ -58,7 +61,8 @@ const projects = [
         </div>
 
         <p class="project-card__highlight">{project.highlight}</p>
-        <p>{project.description}</p>
+        <p><strong>Desafío:</strong> {project.challenge}</p>
+        <p><strong>Decisión de diseño:</strong> {project.designChoice}</p>
 
         <div class="project-card__meta">
           <ul class="project-card__tags" aria-label={`Etiquetas de ${project.title}`}>
